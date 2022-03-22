@@ -1,5 +1,33 @@
 {
+  "name": "intuitive-parsing",
+  "version": "1.0.0",
+  "description": "A JavaScript parser that actually makes sense",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LEDThereBeLight/intuitive-parsing.git"
+  },
+  "keywords": [
+    "javascript",
+    "parsing",
+    "parser",
+    "typescript",
+    "language"
+  ],
+  "author": "Zach Bluedorn",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LEDThereBeLight/intuitive-parsing/issues"
+  },
+  "homepage": "https://github.com/LEDThereBeLight/intuitive-parsing#readme",
   "devDependencies": {
+    "@sweet-monads/interfaces": "^2.3.0",
+    "@typescript-eslint/eslint-plugin": "^5.15.0",
+    "@typescript-eslint/parser": "^5.15.0",
+    "eslint": "^8.11.0",
     "typescript": "^4.6.2"
   },
   "dependencies": {
