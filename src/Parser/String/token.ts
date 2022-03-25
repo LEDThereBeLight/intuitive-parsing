@@ -5,25 +5,26 @@ import {Parser} from '../Parser'
 import {Token} from './../../data/globals'
 
 export function token(token: Token<string>) {
-  return Parser.of<string>(s => {
+  return Parser.of<string>(l => {
     const { index, row, col } = isSubstring(
       token.v,
-      s.index,
-      s.row,
-      s.col,
-      s.input
+      l.index,
+      l.row,
+      l.col,
+      l.input
     )
 
-    // write util to make DeadEnd from s and token.problem
+    // write util to make DeadEnd from l and token.problem
     if (index === -1)
       return NotFound(
         Progress.ReturnedToStart,
-        Directions.hitDeadend(s, token.problem)
+        Directions.hitDeadend(l, token.problem)
       )
+
     return Found(
       token.v === '' ? Progress.ReturnedToStart : Progress.MovedForward,
       null,
-      { ...s, index, row, col }
+      { ...l, index, row, col }
     )
   })
 }

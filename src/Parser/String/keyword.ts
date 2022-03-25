@@ -1,4 +1,5 @@
 import Directions from '../../data/Directions'
+import {FAIL} from '../../data/globals'
 import {Found,NotFound,Progress} from '../../data/ParseResult/ParseResult'
 import {isAlphaNumeric,isSubstring,matchChar} from '../Core/ParserCore'
 import {Parser} from '../Parser'
@@ -14,9 +15,9 @@ export function keyword<V>(keyword: Token<string>, expecting: Parser<null>) {
       s.input
     )
 
-    const pred = c => isAlphaNumeric(c) || c === '_'
+    const pred = (c: string) => isAlphaNumeric(c) || c === '_'
 
-    if (index === -1 || matchChar(pred, index, s.input) >= 0)
+    if (index === FAIL || matchChar(pred, index, s.input) >= 0)
       // Write util to convert s and expecting to a DeadEnd type
       return NotFound<V>(
         Progress.ReturnedToStart,

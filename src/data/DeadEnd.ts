@@ -1,5 +1,5 @@
 import {Col,Row} from './globals'
-import {Problem} from './Reason'
+import {Problem} from './Problem'
 
 export interface DeadEnd {
   row: Row

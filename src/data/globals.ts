@@ -1,11 +1,12 @@
 import {Location} from './Location'
 import {ParseResult} from './ParseResult/ParseResult'
+import {Problem} from './Problem'
 
 export type MovedForward = boolean
 
 export type Look<V> = (loc: Location) => ParseResult<V>
 export type Char = string
-export type Token<V> = { t: 'token'; v: V; problem: string }
+export type Token<V> = { t: 'token'; v: V; problem: Problem }
 export type Row = number
 export type Col = number
 export type ChompResult = { index: number; row: Row; col: Col }
