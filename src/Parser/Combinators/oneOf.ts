@@ -1,8 +1,12 @@
 import Directions from '../../data/Directions'
 import {Location} from '../../data/Location'
-import {Found,NotFound,Progress} from '../../data/ParseResult/ParseResult'
+import {
+  Found,
+  NotFound,
+  ParseResult,
+  Progress
+} from '../../data/ParseResult/ParseResult'
 import {Parser} from '../Parser'
-import {ParseResult} from './../data/Result/ParseResult'
 
 export function oneOf<V>(parsers: Parser<V>[]): Parser<V> {
   return Parser.of(s => go(s))
