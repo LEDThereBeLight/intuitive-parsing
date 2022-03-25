@@ -39,8 +39,7 @@ const videoEmbedParser = make(videoEmbed)
   .ignoring(string('http')
     .ignoring(string('s').optional())
     .ignoring(string('://'))
-    .optional()
-  )
+    .optional())
   .ignoring(string('www.').optional())
   .keeping(
     oneOf(
@@ -49,7 +48,7 @@ const videoEmbedParser = make(videoEmbed)
         string("youtube.com"),
         string("youtu.be"))
       .ignoring("?v=")
-      .keeping(alphaNumeric))
+      .keeping(alphaNumeric)))
 
 // or
 
