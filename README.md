@@ -28,3 +28,48 @@ create an AST from the resulting parse.
 This library is meant to handle both ends by providing an API that's as obvious
 as possible and built-in simple error messages to help more developers realize
 the benefits of parsers for things they'd normally jump to regex for.
+
+For example, here's how you might parse a video embed:
+
+```typescript
+const videoEmbed = (videoId: string) => ({ src: videoId /* other fields */ })
+const vimeo = ...
+
+const videoEmbedParser = make(videoEmbed)
+  .ignoring(string('http')
+    .ignoring(string('s').optional())
+    .ignoring(string('://'))
+  ).optional()
+  .ignoring(string('www')
+    .ignoring(string('.'))
+  ).optional()
+  .keeping(
+    oneOf(
+      oneOf(
+        string("youtube.com"),
+        string("youtu.be"))
+      .ignoring("?v=")
+      .keeping(alphaNumeric),
+
+      vimeo))
+
+// or
+
+const videoEmbedParser = make(videoEmbed)
+  .keeping(oneOf(
+    eatWhile(c => c !== '?')
+      .ignoring(string("?v="))
+      .keeping(alphaNumeric),
+    vimeo))
+
+```
+
+## Prior Work
+
+The implementation is a parser combinator pipeline with ideas from these
+sources:
+
+- Software Design for Flexibility, a book by Gerald Sussman and Chris Hanson
+- Nimble Parsec, a great parser combinator library ported to many different
+  languages
+- The core Elm parser
